@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IKycApplication } from '../../interfaces/IKycDocument'
 import { KycStatus } from '../../interfaces/IKycDocument'
 import { Modal } from 'antd'

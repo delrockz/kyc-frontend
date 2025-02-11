@@ -1,5 +1,4 @@
 import initialState from './initialState'
-import { IReducer } from '../../interfaces/IReducer'
 import IAction from '../../interfaces/IAction'
 import { actions } from './actions/constants'
 import { IUser } from '../../interfaces/IUser'

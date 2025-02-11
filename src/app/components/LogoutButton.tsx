@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch } from 'react-redux'
 import { logout } from '../store/actions'
 import { LogoutOutlined } from '@ant-design/icons'
