@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { store, persistor } from './app/store/store'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import { BrowserRouter as Router } from 'react-router-dom'
+import '@ant-design/v5-patch-for-react-19'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
