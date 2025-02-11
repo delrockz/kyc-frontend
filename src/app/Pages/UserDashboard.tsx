@@ -1,23 +1,18 @@
 import React from 'react'
-import { Button } from 'antd'
-import { LogoutOutlined } from '@ant-design/icons'
-import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../store/actions'
+import { useSelector } from 'react-redux'
 import { IReducer } from '../../interfaces/IReducer'
 import KycApplicationDetails from '../components/KycApplicationDetails'
 import SubmitKycForm from '../components/SubmitKycForm'
+import LogoutButton from '../components/LogoutButton'
 
 const UserDashboard: React.FC = () => {
-  const dispatch = useDispatch()
   const kycApplication = useSelector((state: IReducer) => state.kycApplication)
 
   return (
     <div className='p-4'>
       <div className='flex justify-between items-center bg-white p-4 shadow-md'>
-        <h2 className='text-xl font-semibold text-black'>KYC Application</h2>
-        <Button onClick={() => dispatch(logout())} type='primary' icon={<LogoutOutlined />}>
-          Logout
-        </Button>
+        <h2 className='text-md md:text-xl font-semibold text-black'>KYC Application</h2>
+        <LogoutButton />
       </div>
 
       <div className='flex justify-center gap-4 my-6'>
