@@ -32,3 +32,9 @@ export const logout = () => {
     type: actions.LOGOUT
   }
 }
+export const submitKycApplication = (kycApplication: IKycApplication) => {
+  return {
+    type: actions.SUBMIT_KYC_APPLICATION,
+    payload: kycApplication
+  }
+}

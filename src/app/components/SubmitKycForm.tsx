@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { Form, Input, Button, message, Card, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { submitKyc } from '../API/KYC'
+import { useDispatch } from 'react-redux'
+import { submitKycApplication } from '../store/actions'
 
 const SubmitKycForm: React.FC = () => {
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -24,7 +27,8 @@ const SubmitKycForm: React.FC = () => {
         return message.error(err)
       }
       setError(null)
-      return message.success(responseData)
+      dispatch(submitKycApplication(responseData))
+      return message.success('KYC details submitted successfully!')
     })
   }
 

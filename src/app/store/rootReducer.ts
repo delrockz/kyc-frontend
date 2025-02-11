@@ -39,6 +39,11 @@ const rootReducer = (state = initialState, action: IAction) => {
         accessToken: null,
         kycApplication: null
       }
+    case actions.SUBMIT_KYC_APPLICATION:
+      return {
+        ...state,
+        kycApplication: action.payload
+      }
     default:
       return state
   }
