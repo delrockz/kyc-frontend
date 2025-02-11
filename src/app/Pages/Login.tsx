@@ -9,7 +9,6 @@ import { loginFailure, loginRequest, loginSuccess } from '../store/actions'
 const Login: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   const { loading, error } = useSelector((state: IReducer) => state)
 
   const onFinish = async (values: { email: string; password: string }) => {
@@ -19,7 +18,13 @@ const Login: React.FC = () => {
         dispatch(loginFailure(err))
         return message.error(err)
       }
-      dispatch(loginSuccess(responseData.user))
+      dispatch(
+        loginSuccess({
+          user: responseData.user,
+          accessToken: responseData.accessToken,
+          kycApplication: responseData.kycApplication
+        })
+      )
       return message.success('Login successful!')
     })
   }

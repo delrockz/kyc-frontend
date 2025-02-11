@@ -47,8 +47,30 @@ const App = () => {
             }
             path={'/login'}
           />
-          <Route element={!user?.email ? <Navigate to='/login' /> : <UserDashboard />} path={'/userdashboard'} />
-          <Route element={!user?.email ? <Navigate to='/login' /> : <AdminDashboard />} path={'/admindashboard'} />
+          <Route
+            element={
+              !user?.email ? (
+                <Navigate to='/login' />
+              ) : user?.userType === 'User' ? (
+                <UserDashboard />
+              ) : (
+                <Navigate to='/admindashboard' />
+              )
+            }
+            path={'/userdashboard'}
+          />
+          <Route
+            element={
+              !user?.email ? (
+                <Navigate to='/login' />
+              ) : user?.userType === 'Admin' ? (
+                <AdminDashboard />
+              ) : (
+                <Navigate to='/userdashboard' />
+              )
+            }
+            path={'/admindashboard'}
+          />
         </Routes>
       </Suspense>
     </div>

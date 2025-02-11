@@ -4,12 +4,11 @@ import IAction from '../../interfaces/IAction'
 import { actions } from './actions/constants'
 import { IUser } from '../../interfaces/IUser'
 
-const rootReducer = (state: IReducer = initialState, action: IAction) => {
+const rootReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case actions.LOGIN_REQUEST:
       return {
         ...state,
-        user: null,
         loading: true,
         error: null
       }
@@ -17,7 +16,9 @@ const rootReducer = (state: IReducer = initialState, action: IAction) => {
       return {
         ...state,
         loading: false,
-        user: action.payload,
+        user: action.payload.user,
+        accessToken: action.payload.accessToken,
+        kycApplication: action.payload.kycApplication,
         error: null
       }
     case actions.LOGIN_FAILURE:
@@ -25,14 +26,18 @@ const rootReducer = (state: IReducer = initialState, action: IAction) => {
         ...state,
         user: null,
         loading: false,
-        error: action.payload
+        error: action.payload,
+        accessToken: null,
+        kycApplication: null
       }
     case actions.LOGOUT:
       return {
         ...state,
         user: {} as IUser,
         loading: false,
-        error: null
+        error: null,
+        accessToken: null,
+        kycApplication: null
       }
     default:
       return state

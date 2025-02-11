@@ -1,3 +1,4 @@
+import { IKycApplication } from '../../../interfaces/IKycDocument'
 import { IUser } from '../../../interfaces/IUser'
 import { actions } from './constants'
 
@@ -6,10 +7,18 @@ export const loginRequest = () => {
     type: actions.LOGIN_REQUEST
   }
 }
-export const loginSuccess = (user: IUser) => {
+export const loginSuccess = ({
+  user,
+  accessToken,
+  kycApplication
+}: {
+  user: IUser
+  accessToken: string
+  kycApplication: IKycApplication
+}) => {
   return {
     type: actions.LOGIN_SUCCESS,
-    payload: user
+    payload: { user, accessToken, kycApplication }
   }
 }
 export const loginFailure = (error: string) => {
